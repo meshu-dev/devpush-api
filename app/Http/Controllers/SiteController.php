@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use App\Repositories\SiteRepository;
-use App\Resources\SiteResource;
+use App\Http\Resources\SiteResource;
 
 class SiteController extends Controller
 {

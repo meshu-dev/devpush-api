@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use App\Repositories\SiteCategoryRepository;
-use App\Resources\SiteCategoryResource;
+use App\Http\Resources\SiteCategoryResource;
 
 class SiteCategoryController extends Controller
 {
