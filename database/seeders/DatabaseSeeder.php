@@ -46,14 +46,14 @@ class DatabaseSeeder extends Seeder
     ];
 
     protected const PHP_SITES = [
-        ['name' => 'Laravel',      'type' => 'framework',  'url' => 'https://laravel.com',                                               'image_url' => 'https://requiredev.s3.eu-west-2.amazonaws.com/devsites/amazon.png'],
-        ['name' => 'Symfony',      'type' => 'framework',  'url' => 'https://symfony.com',                                               'image_url' => 'https://requiredev.s3.eu-west-2.amazonaws.com/devsites/amazon.png'],
-        ['name' => 'CodeIgniter',  'type' => 'framework',  'url' => 'https://www.codeigniter.com',                                       'image_url' => 'https://requiredev.s3.eu-west-2.amazonaws.com/devsites/amazon.png'],
-        ['name' => 'CakePHP',      'type' => 'framework',  'url' => 'https://cakephp.org',                                               'image_url' => 'https://requiredev.s3.eu-west-2.amazonaws.com/devsites/amazon.png'],
-        ['name' => 'Wordpress',    'type' => 'cms',        'url' => 'https://en-gb.wordpress.org',                                       'image_url' => 'https://requiredev.s3.eu-west-2.amazonaws.com/devsites/amazon.png'],
-        ['name' => 'Drupal',       'type' => 'cms',        'url' => 'https://www.drupal.org',                                            'image_url' => 'https://requiredev.s3.eu-west-2.amazonaws.com/devsites/amazon.png'],
-        ['name' => 'Magento',      'type' => 'shop',       'url' => 'https://business.adobe.com/products/magento/magento-commerce.html', 'image_url' => 'https://requiredev.s3.eu-west-2.amazonaws.com/devsites/amazon.png'],
-        ['name' => 'OpenCart',     'type' => 'shop',       'url' => 'https://www.opencart.com',                                          'image_url' => 'https://requiredev.s3.eu-west-2.amazonaws.com/devsites/amazon.png'],
+        ['name' => 'Laravel',      'type' => 'framework',  'url' => 'https://laravel.com',                                               'image_url' => 'https://requiredev.s3.eu-west-2.amazonaws.com/devsites/laravel.png'],
+        ['name' => 'Symfony',      'type' => 'framework',  'url' => 'https://symfony.com',                                               'image_url' => 'https://requiredev.s3.eu-west-2.amazonaws.com/devsites/symfony.png'],
+        ['name' => 'CodeIgniter',  'type' => 'framework',  'url' => 'https://www.codeigniter.com',                                       'image_url' => 'https://requiredev.s3.eu-west-2.amazonaws.com/devsites/codeigniter.png'],
+        ['name' => 'CakePHP',      'type' => 'framework',  'url' => 'https://cakephp.org',                                               'image_url' => 'https://requiredev.s3.eu-west-2.amazonaws.com/devsites/cakephp.png'],
+        ['name' => 'Wordpress',    'type' => 'cms',        'url' => 'https://en-gb.wordpress.org',                                       'image_url' => 'https://requiredev.s3.eu-west-2.amazonaws.com/devsites/wordpress.png'],
+        ['name' => 'Drupal',       'type' => 'cms',        'url' => 'https://www.drupal.org',                                            'image_url' => 'https://requiredev.s3.eu-west-2.amazonaws.com/devsites/drupal.png'],
+        ['name' => 'Magento',      'type' => 'shop',       'url' => 'https://business.adobe.com/products/magento/magento-commerce.html', 'image_url' => 'https://requiredev.s3.eu-west-2.amazonaws.com/devsites/magento.png'],
+        ['name' => 'OpenCart',     'type' => 'shop',       'url' => 'https://www.opencart.com',                                          'image_url' => 'https://requiredev.s3.eu-west-2.amazonaws.com/devsites/opencart.png'],
     ];
 
     public function run()
