@@ -10,14 +10,14 @@ use App\Models\{
 
 class DatabaseSeeder extends Seeder
 {
-    protected const SITE_CATEGORIES = [
+    protected const DEV_SITE_CATEGORIES = [
         ['name' => 'Cloud services',               'type' => 'cloud'],
         ['name' => 'Javascript libs / frameworks', 'type' => 'js'],
         ['name' => 'Mobile SDKs',                  'type' => 'mobile'],
         ['name' => 'PHP frameworks',               'type' => 'php']
     ];
 
-    protected const SITES = [
+    protected const DEV_SITES = [
         ['name' => 'Amazon AWS',      'type' => 'cloud',  'url' => 'https://aws.amazon.com',        'image_url' => 'https://requiredev.s3.eu-west-2.amazonaws.com/devsites/amazon.png'],
         ['name' => 'Microsoft Azure', 'type' => 'cloud',  'url' => 'https://azure.microsoft.com',   'image_url' => 'https://requiredev.s3.eu-west-2.amazonaws.com/devsites/amazon.png'],
         ['name' => 'Google Cloud',    'type' => 'cloud',  'url' => 'https://cloud.google.com',      'image_url' => 'https://requiredev.s3.eu-west-2.amazonaws.com/devsites/amazon.png'],
@@ -39,6 +39,23 @@ class DatabaseSeeder extends Seeder
         ['name' => 'Iconic',          'type' => 'mobile', 'url' => 'https://ionicframework.com',    'image_url' => 'https://requiredev.s3.eu-west-2.amazonaws.com/devsites/amazon.png'],
     ];
 
+    protected const PHP_SITE_CATEGORIES = [
+        ['name' => 'Frameworks',                 'type' => 'framework'],
+        ['name' => 'Content Management systems', 'type' => 'cms'],
+        ['name' => 'E-commerce',                 'type' => 'shop']
+    ];
+
+    protected const PHP_SITES = [
+        ['name' => 'Laravel',      'type' => 'framework',  'url' => 'https://laravel.com',                                               'image_url' => 'https://requiredev.s3.eu-west-2.amazonaws.com/devsites/amazon.png'],
+        ['name' => 'Symfony',      'type' => 'framework',  'url' => 'https://symfony.com',                                               'image_url' => 'https://requiredev.s3.eu-west-2.amazonaws.com/devsites/amazon.png'],
+        ['name' => 'CodeIgniter',  'type' => 'framework',  'url' => 'https://www.codeigniter.com',                                       'image_url' => 'https://requiredev.s3.eu-west-2.amazonaws.com/devsites/amazon.png'],
+        ['name' => 'CakePHP',      'type' => 'framework',  'url' => 'https://cakephp.org',                                               'image_url' => 'https://requiredev.s3.eu-west-2.amazonaws.com/devsites/amazon.png'],
+        ['name' => 'Wordpress',    'type' => 'cms',        'url' => 'https://en-gb.wordpress.org',                                       'image_url' => 'https://requiredev.s3.eu-west-2.amazonaws.com/devsites/amazon.png'],
+        ['name' => 'Drupal',       'type' => 'cms',        'url' => 'https://www.drupal.org',                                            'image_url' => 'https://requiredev.s3.eu-west-2.amazonaws.com/devsites/amazon.png'],
+        ['name' => 'Magento',      'type' => 'shop',       'url' => 'https://business.adobe.com/products/magento/magento-commerce.html', 'image_url' => 'https://requiredev.s3.eu-west-2.amazonaws.com/devsites/amazon.png'],
+        ['name' => 'OpenCart',     'type' => 'shop',       'url' => 'https://www.opencart.com',                                          'image_url' => 'https://requiredev.s3.eu-west-2.amazonaws.com/devsites/amazon.png'],
+    ];
+
     public function run()
     {
         $siteCategoryIds = $this->createSiteCategories();
@@ -49,7 +66,7 @@ class DatabaseSeeder extends Seeder
     {
         $siteCategoryIds = [];
 
-        foreach (self::SITE_CATEGORIES as $siteCategory) {
+        foreach (self::PHP_SITE_CATEGORIES as $siteCategory) {
             $name = $siteCategory['name'];
             $type = $siteCategory['type'];
 
@@ -61,7 +78,7 @@ class DatabaseSeeder extends Seeder
 
     protected function createSites(array $siteCategoryIds): void
     {
-        foreach (self::SITES as $site) {
+        foreach (self::PHP_SITES as $site) {
             $type           = $site['type'];
             $siteCategoryId = $siteCategoryIds[$type];
 
