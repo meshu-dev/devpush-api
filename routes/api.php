@@ -23,13 +23,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['prefix' => 'devsites'], function ($router) {
-    Route::group(['prefix' => 'site-categories'], function ($router) {
-        Route::get('/', [SiteCategoryController::class, 'getAll']);
-    });
-
-    Route::group(['prefix' => 'sites'], function ($router) {
-        Route::get('/', [SiteController::class, 'getAllSites']);
-        Route::get('/category/{id}', [SiteController::class, 'getCategorySites']);
-    });
+Route::group(['prefix' => 'posts'], function ($router) {
+    Route::get('/', [SiteCategoryController::class, 'getAll']);
 });
