@@ -185,4 +185,5 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
+    'requireDevApiUrl' => env('REQUIREDEV_WP_API', 'http://localhost:8001')
 ];

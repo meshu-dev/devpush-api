@@ -4,8 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\{
-    SiteCategoryController,
-    SiteController
+    PostCategoryController,
+    PostController
 };
 
 /*
@@ -24,5 +24,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group(['prefix' => 'posts'], function ($router) {
-    Route::get('/', [SiteCategoryController::class, 'getAll']);
+    Route::group(['prefix' => 'categories'], function ($router) {
+        Route::get('/', [PostCategoryController::class, 'getAll']);
+    });
+    Route::get('/', [PostController::class, 'getAll']);
+    Route::get('/{id}', [PostController::class, 'get']);
 });
