@@ -19,6 +19,13 @@ class PostRepository
         return Post::with('wpPost')->where('id', $id)->first();
     }
 
+    public function getAllUrls()
+    {
+        return Post::with(['wpPost' => function ($query) {
+            $query->select('ID', 'post_name');
+        }])->get();
+    }
+
     public function getByWordpressPostId(int $wordpressPostId): Post|null
     {
         return Post::where('wp_post_id', $wordpressPostId)->first();

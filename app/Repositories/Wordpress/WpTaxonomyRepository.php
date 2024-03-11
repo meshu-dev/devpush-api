@@ -2,13 +2,13 @@
 
 namespace App\Repositories\Wordpress;
 
-use App\Models\Wordpress\Taxonomy;
+use App\Models\Wordpress\WpTaxonomy;
 
 class WpTaxonomyRepository
 {
     public function getCategories()
     {
-        $taxomyCategories = Taxonomy::where('taxonomy', 'category')->get();
+        $taxomyCategories = WpTaxonomy::where('taxonomy', 'category')->get();
         $terms = [];
 
         foreach ($taxomyCategories as $taxomyCategory) {

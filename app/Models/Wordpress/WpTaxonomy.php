@@ -4,7 +4,7 @@ namespace App\Models\Wordpress;
 
 use Corcel\Model\Taxonomy as Corcel;
 
-class Taxonomy extends Corcel
+class WpTaxonomy extends Corcel
 {
     protected $connection = 'wordpress';
 }
