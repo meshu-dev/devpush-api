@@ -30,4 +30,5 @@ Route::group(['prefix' => 'posts'], function ($router) {
     Route::get('/', [PostController::class, 'getAll']);
     Route::get('/urls', [PostController::class, 'getUrls']);
     Route::get('/{id}', [PostController::class, 'get']);
+    Route::get('/slug/{slug}', [PostController::class, 'getBySlug']);
 });

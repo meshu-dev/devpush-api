@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('wp_category_id');
             $table->unsignedBigInteger('wp_post_id');
-            $table->string('name');
+            $table->string('slug');
             $table->timestamps();
         });
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions;
+namespace App\Actions\Post;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\PostUrlResource;
@@ -15,11 +15,7 @@ class GetPostUrlsAction
     public function execute(): JsonResource
     {
         $urls = $this->postRepository->getAllUrls();
-
-        $urls = $urls->filter(function ($post) {
-            return $post->wpPost->slug;
-        });
-
+        
         return PostUrlResource::collection($urls);
     }
 }

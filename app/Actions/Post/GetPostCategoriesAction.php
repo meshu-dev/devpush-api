@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions;
+namespace App\Actions\Post;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\PostCategoryResource;

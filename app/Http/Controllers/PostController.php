@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\{GetPostListAction, GetPostAction, GetPostUrlsAction};
+use App\Actions\Post\{GetPostListAction, GetPostAction, GetPostUrlsAction, GetPostBySlugAction};
 
 class PostController extends Controller
 {   
@@ -19,5 +19,10 @@ class PostController extends Controller
     public function getUrls(GetPostUrlsAction $getPostUrlsAction)
     {
         return $getPostUrlsAction->execute();
+    }
+
+    public function getBySlug(string $slug, GetPostBySlugAction $getPostBySlugAction)
+    {
+        return $getPostBySlugAction->execute($slug);
     }
 }

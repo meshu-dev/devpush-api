@@ -13,7 +13,7 @@ class Post extends Model
     protected $fillable = [
         'wp_category_id',
         'wp_post_id',
-        'name',
+        'slug',
         'created_at',
         'updated_at'
     ];

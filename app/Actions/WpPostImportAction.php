@@ -2,6 +2,7 @@
 
 namespace App\Actions;
 
+use App\Exceptions\WpPostSlugBlankException;
 use App\Repositories\{PostRepository, PostCategoryRepository};
 use App\Repositories\Wordpress\WpPostRepository;
 
@@ -18,12 +19,18 @@ class WpPostImportAction
         $wpPosts = $this->wpPostRepository->getAll();
 
         foreach ($wpPosts as $wpPost) {
+            throw_if(
+                !$wpPost->slug,
+                WpPostSlugBlankException::class,
+                'Wordpress post with ID ' . $wpPost->ID . ' has a blank slug'
+            );
+
             $wpPostId = (int) $wpPost->ID;
             $categoryTaxonomy = $wpPost->taxonomies()->first();
 
             $params = [
                 'wp_category_id' => $categoryTaxonomy->term->term_id ?? 0,
-                'name'           => $wpPost->post_title,
+                'slug'           => $wpPost->slug,
                 'created_at'     => $wpPost->post_date,
                 'updated_at'     => $wpPost->post_modified
             ];
