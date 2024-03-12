@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Actions\{WpCategoryImportAction, WpPostImportAction};
+use App\Actions\WpImport\{WpCategoryImportAction, WpPostImportAction};
 
 class WpImport extends Command
 {

@@ -8,6 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
+        /*
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -22,7 +23,7 @@ return new class extends Migration
             $table->text('message');
             $table->boolean('is_sent');
             $table->timestamps();
-        });
+        }); */
     }
 
     public function down(): void

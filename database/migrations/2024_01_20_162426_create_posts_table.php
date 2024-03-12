@@ -16,16 +16,27 @@ return new class extends Migration
 
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('wp_category_id');
             $table->unsignedBigInteger('wp_post_id');
+            $table->unsignedBigInteger('wp_category_id');
+            //$table->unsignedBigInteger('wp_featured_media_id');
             $table->string('slug');
             $table->timestamps();
         });
+
+        /*
+        Schema::create('post_thumbnails', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('wp_featured_media_id');
+            $table->text('source_image_url');
+            $table->json('sizes');
+            $table->timestamps();
+        }); */
     }
 
     public function down(): void
     {
         Schema::dropIfExists('post_categories');
+        //Schema::dropIfExists('post_thumbnails');
         Schema::dropIfExists('posts');
     }
 };

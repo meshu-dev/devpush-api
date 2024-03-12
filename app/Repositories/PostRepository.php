@@ -31,29 +31,29 @@ class PostRepository
         }])->get();
     }
 
-    public function getByWordpressPostId(int $wordpressPostId): Post|null
+    public function getByWpPostId(int $wpPostId): Post|null
     {
-        return Post::where('wp_post_id', $wordpressPostId)->first();
+        return Post::where('wp_post_id', $wpPostId)->first();
     }
 
     public function add(array $params): Post
     {
         return Post::create([
-            'wp_category_id' => $params['wp_category_id'],
-            'wp_post_id'     => $params['wp_post_id'],
-            'slug'           => $params['slug'],
-            'created_at'     => $params['created_at'],
-            'updated_at'     => $params['updated_at']
+            'wp_post_id'           => $params['wp_post_id'],
+            'wp_category_id'       => $params['wp_category_id'],
+            'slug'                 => $params['slug'],
+            'created_at'           => $params['created_at'],
+            'updated_at'           => $params['updated_at']
         ]);
     }
 
     public function edit(int $id, array $params): bool
     {
         $post = Post::find($id);
-        $post->wp_category_id = $params['wp_category_id'];
-        $post->slug           = $params['slug'];
-        $post->created_at     = $params['created_at'];
-        $post->updated_at     = $params['updated_at'];
+        $post->wp_category_id       = $params['wp_category_id'];
+        $post->slug                 = $params['slug'];
+        $post->created_at           = $params['created_at'];
+        $post->updated_at           = $params['updated_at'];
         return $post->save();
     }
 }

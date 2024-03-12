@@ -13,9 +13,11 @@ class PostListResource extends JsonResource
             'id'             => $this->id,
             'wp_category_id' => $this->wp_category_id,
             'title'          => $this->wpPost->title,
-            'excerpt'        => $this->wpPost->post_excerpt,
             'slug'           => $this->wpPost->slug,
-            'thumbnail'      => $this->wpPost->thumbnail
+            'excerpt'        => $this->wpPost->post_excerpt,
+            'thumbnail'      => $this->wpPost->thumbnail?->attachment?->url,
+            'created_at'     => $this->wpPost->date,
+            'updated_at'     => $this->wpPost->modified
         ];
     }
 }

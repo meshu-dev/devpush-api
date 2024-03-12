@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use App\Models\Wordpress\Term;
+use App\Models\Wordpress\WpTerm;
 
 class PostCategory extends Model
 {
@@ -19,6 +19,6 @@ class PostCategory extends Model
 
     public function wpCategory(): BelongsTo
     {
-        return $this->belongsTo(Term::class, 'wp_category_id', 'term_id');
+        return $this->belongsTo(WpTerm::class, 'wp_category_id', 'term_id');
     }
 }
