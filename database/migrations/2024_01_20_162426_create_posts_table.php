@@ -21,21 +21,11 @@ return new class extends Migration
             $table->string('slug');
             $table->timestamps();
         });
-
-        /*
-        Schema::create('post_thumbnails', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('wp_featured_media_id');
-            $table->text('source_image_url');
-            $table->json('sizes');
-            $table->timestamps();
-        }); */
     }
 
     public function down(): void
     {
         Schema::dropIfExists('post_categories');
-        //Schema::dropIfExists('post_thumbnails');
         Schema::dropIfExists('posts');
     }
 };
