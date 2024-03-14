@@ -15,6 +15,8 @@ class PostCategory extends Model
         'name'
     ];
 
+    public $timestamps = false;
+
     public function wpCategory(): BelongsTo
     {
         return $this->belongsTo(WpTerm::class, 'wp_category_id', 'term_id');
