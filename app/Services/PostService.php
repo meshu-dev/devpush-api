@@ -17,13 +17,10 @@ class PostService
     {
         $wpPostId = (int) $wpPost->ID;
         $categoryTaxonomy = $wpPost->taxonomies()->first();
-        $wpFeaturedMediaId = $wpPost->thumbnail !== null ? $wpPost->thumbnail->meta_value : 0;
 
         $params = [
-            'wp_category_id'       => $categoryTaxonomy->term->term_id ?? 0,
-            'slug'                 => $wpPost->slug,
-            'created_at'           => $wpPost->post_date,
-            'updated_at'           => $wpPost->post_modified
+            'wp_category_id' => $categoryTaxonomy->term->term_id ?? 0,
+            'slug'           => $wpPost->slug
         ];
 
         $post = $this->postRepository->getByWpPostId($wpPostId);
