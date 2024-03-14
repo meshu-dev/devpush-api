@@ -14,12 +14,8 @@ class Post extends Model
     protected $fillable = [
         'wp_post_id',
         'wp_category_id',
-        'slug',
-        'created_at',
-        'updated_at'
+        'slug'
     ];
-
-    public $timestamps = false;
 
     public function wpPost(): BelongsTo
     {

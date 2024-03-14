@@ -41,9 +41,7 @@ class PostRepository
         return Post::create([
             'wp_post_id'           => $params['wp_post_id'],
             'wp_category_id'       => $params['wp_category_id'],
-            'slug'                 => $params['slug'],
-            'created_at'           => $params['created_at'],
-            'updated_at'           => $params['updated_at']
+            'slug'                 => $params['slug']
         ]);
     }
 
@@ -52,8 +50,6 @@ class PostRepository
         $post = Post::find($id);
         $post->wp_category_id       = $params['wp_category_id'];
         $post->slug                 = $params['slug'];
-        $post->created_at           = $params['created_at'];
-        $post->updated_at           = $params['updated_at'];
         return $post->save();
     }
 }

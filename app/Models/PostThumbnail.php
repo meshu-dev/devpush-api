@@ -13,8 +13,6 @@ class PostThumbnail extends Model
     protected $fillable = [
         'wp_featured_media_id',
         'source_image_url',
-        'sizes',
-        'created_at',
-        'updated_at'
+        'sizes'
     ];
 }
