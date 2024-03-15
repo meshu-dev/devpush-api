@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Actions\WpImport\{WpCategoryImportAction, WpPostImportAction};
+use App\Actions\Vercel\CallDeployWebhookAction;
 
 class WpImport extends Command
 {
@@ -28,5 +29,6 @@ class WpImport extends Command
     {
         (app()->make(WpCategoryImportAction::class))->execute();
         (app()->make(WpPostImportAction::class))->execute();
+        (app()->make(CallDeployWebhookAction::class)->execute());
     }
 }

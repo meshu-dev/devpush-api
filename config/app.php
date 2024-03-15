@@ -185,5 +185,5 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
-    'requireDevApiUrl' => env('REQUIREDEV_WP_API', 'http://localhost:8001')
+    'vercel_deploy_webhook' => env('VERCEL_DEPLOY_WEBHOOK', '')
 ];

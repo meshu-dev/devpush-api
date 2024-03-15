@@ -2,15 +2,14 @@
 
 namespace App\Services;
 
-use App\Repositories\{PostRepository, PostCategoryRepository, PostThumbnailRepository};
+use App\Repositories\{PostRepository, PostCategoryRepository};
 use Corcel\Model\Meta\ThumbnailMeta;
 
 class PostService
 {
     public function __construct(
         protected PostRepository $postRepository,
-        protected PostCategoryRepository $postCategoryRepository,
-        protected PostThumbnailRepository $postThumbnailRepository
+        protected PostCategoryRepository $postCategoryRepository
     ) { }
 
     public function upsertPost($wpPost)
@@ -50,38 +49,6 @@ class PostService
         } else {
             $params['wp_category_id'] = $wpCategoryId;
             $this->postCategoryRepository->add($params);
-        }
-    }
-
-    public function upsertPostThumbnail($wpPost)
-    {
-        if ($wpPost->thumbnail !== null) {
-            $corcelThumbnail  = $wpPost->thumbnail;
-            $wpFeaturedMediaId = $corcelThumbnail->meta_value;
-
-            $postThumbnail = $this->postThumbnailRepository->getByWpFeaturedMediaId($wpFeaturedMediaId);
-
-            $corcelAttachment = $corcelThumbnail?->attachment;
-
-            $sizes   = [];
-            $sizes[] = $corcelThumbnail->size(ThumbnailMeta::SIZE_THUMBNAIL);
-            $sizes[] = $corcelThumbnail->size(ThumbnailMeta::SIZE_MEDIUM);
-            $sizes[] = $corcelThumbnail->size(ThumbnailMeta::SIZE_LARGE);
-            $sizes[] = $corcelThumbnail->size(ThumbnailMeta::SIZE_FULL);
-
-            $params = [
-                'source_image_url'     => $corcelAttachment->guid,
-                'sizes'                => $sizes,
-                'created_at'           => $corcelAttachment->post_date,
-                'updated_at'           => $corcelAttachment->post_modified
-            ];
-
-            if ($postThumbnail) {
-                $this->postThumbnailRepository->edit($postThumbnail->id, $params);
-            } else {
-                $params['wp_featured_media_id'] = $wpFeaturedMediaId;
-                $this->postThumbnailRepository->add($params);
-            }
         }
     }
 }

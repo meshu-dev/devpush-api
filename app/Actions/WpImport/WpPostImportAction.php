@@ -25,7 +25,6 @@ class WpPostImportAction
             );
 
             $this->postService->upsertPost($wpPost);
-            //$this->postService->upsertPostThumbnail($wpPost);
         }
     }
 }
