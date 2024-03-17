@@ -15,7 +15,6 @@ class PostResource extends JsonResource
             'title'          => $this->wpPost->title,
             'slug'           => $this->wpPost->slug,
             'content'        => $this->wpPost->content,
-            'thumbnail'      => $this->wpPost->thumbnail?->attachment?->url,
             'published_at'   => $this->created_at,
             'updated_at'     => $this->wpPost->post_modified
         ];

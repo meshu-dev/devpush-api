@@ -14,8 +14,6 @@ class PostListResource extends JsonResource
             'wp_category_id' => $this->wp_category_id,
             'title'          => $this->wpPost->title,
             'slug'           => $this->wpPost->slug,
-            'excerpt'        => $this->wpPost->post_excerpt,
-            'thumbnail'      => $this->wpPost->thumbnail?->attachment?->url,
             'published_at'   => $this->created_at,
             'updated_at'     => $this->wpPost->post_modified
         ];
