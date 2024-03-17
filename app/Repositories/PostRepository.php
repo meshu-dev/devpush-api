@@ -11,7 +11,7 @@ class PostRepository
 
     public function getPaginated(): LengthAwarePaginator
     {
-        return Post::with('wpPost')->paginate(self::PAGE_LIMIT);
+        return Post::with('wpPost')->latest()->paginate(self::PAGE_LIMIT);
     }
 
     public function get(int $id): Post
