@@ -52,4 +52,9 @@ class PostRepository
         $post->slug                 = $params['slug'];
         return $post->save();
     }
+
+    public function delete(int $id)
+    {
+        return Post::destroy($id);
+    }
 }

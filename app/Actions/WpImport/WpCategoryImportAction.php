@@ -17,7 +17,7 @@ class WpCategoryImportAction
         $wpCategories = $this->wpTaxonomyRepository->getCategories();
 
         foreach ($wpCategories as $wpCategory) {
-            $this->postService->upsertPostCategory($wpCategory);
+            $this->postService->processPostCategory($wpCategory);
         }
     }
 }

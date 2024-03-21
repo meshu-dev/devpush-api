@@ -12,7 +12,7 @@ class PostService
         protected PostCategoryRepository $postCategoryRepository
     ) { }
 
-    public function upsertPost($wpPost)
+    public function processPost($wpPost)
     {
         $wpPostId = (int) $wpPost->ID;
         $categoryTaxonomy = $wpPost->taxonomies()->first();
@@ -25,17 +25,21 @@ class PostService
         $post = $this->postRepository->getByWpPostId($wpPostId);
 
         if ($post) {
-            $this->postRepository->edit(
-                $post->id,
-                $params
-            );
+            if (strpos($wpPost->slug, '__trashed') !== false) {
+                $this->postRepository->delete($post->id);
+            } else {
+                $this->postRepository->edit(
+                    $post->id,
+                    $params
+                );
+            }
         } else {
             $params['wp_post_id'] = $wpPostId;
             $this->postRepository->add($params);
         }
     }
 
-    public function upsertPostCategory($wpCategory)
+    public function processPostCategory($wpCategory)
     {
         $wpCategoryId = (int) $wpCategory->term_id;
         $postCategory = $this->postCategoryRepository->getByWordpressCategoryId($wpCategoryId);

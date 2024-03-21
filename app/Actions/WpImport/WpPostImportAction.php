@@ -24,7 +24,7 @@ class WpPostImportAction
                 'Wordpress post with ID ' . $wpPost->ID . ' has a blank slug'
             );
 
-            $this->postService->upsertPost($wpPost);
+            $this->postService->processPost($wpPost);
         }
     }
 }
