@@ -9,7 +9,7 @@ class WpPostRepository
     public function getAll()
     {
         return WpPost::where('post_type', 'post')
-                     ->where('post_status', 'publish')
+                     ->whereIn('post_status', ['publish', 'trash'])
                      ->get();
     }
 }
