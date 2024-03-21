@@ -33,7 +33,7 @@ class PostRepository
 
     public function getByWpPostId(int $wpPostId, bool $incDeleted = false): Post|null
     {
-        $model = $incDeleted ? Post::select('*') : Post::withTrashed();
+        $model = $incDeleted ? Post::withTrashed() : Post::select('*');
         return $model->where('wp_post_id', $wpPostId)->first();
     }
 
