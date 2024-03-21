@@ -31,9 +31,10 @@ class PostRepository
         }])->get();
     }
 
-    public function getByWpPostId(int $wpPostId): Post|null
+    public function getByWpPostId(int $wpPostId, bool $incDeleted = false): Post|null
     {
-        return Post::where('wp_post_id', $wpPostId)->first();
+        $model = $incDeleted ? Post::select('*') : Post::withTrashed();
+        return $model->where('wp_post_id', $wpPostId)->first();
     }
 
     public function add(array $params): Post

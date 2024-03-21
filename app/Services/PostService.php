@@ -22,10 +22,11 @@ class PostService
             'slug'           => $wpPost->slug
         ];
 
-        $post = $this->postRepository->getByWpPostId($wpPostId);
+        $post          = $this->postRepository->getByWpPostId($wpPostId, true);
+        $isPostDeleted = strpos($wpPost->slug, '__trashed') !== false;
 
         if ($post) {
-            if (strpos($wpPost->slug, '__trashed') !== false) {
+            if ($isPostDeleted) {
                 $this->postRepository->delete($post->id);
             } else {
                 $this->postRepository->edit(
@@ -35,7 +36,11 @@ class PostService
             }
         } else {
             $params['wp_post_id'] = $wpPostId;
-            $this->postRepository->add($params);
+            $post = $this->postRepository->add($params);
+
+            if ($isPostDeleted) {
+                $this->postRepository->delete($post->id);
+            }
         }
     }
 
